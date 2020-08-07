@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smile/onboarding/data.dart';
+import 'package:smile/screens/home.dart';
 
 int slideIndex = 0;
 PageController pageController;
@@ -155,8 +156,8 @@ class SlideTile extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 CircularProgressIndicator();
-                // Navigator.pushReplacement(context,
-                //     MaterialPageRoute(builder: (context) => Register()));
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Home()));
               },
               child: Container(
                 margin: EdgeInsets.only(right: 20.0, top: 42.0, left: 20.0),

@@ -10,12 +10,24 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
-      appBar: AppBar(
-        title: Text('SMILE'),
-      ),
-      body: Jokes(),
-    );
+        backgroundColor: Colors.blueAccent,
+        appBar: AppBar(
+          title: Text('SMILE'),
+        ),
+        body: Jokes(),
+        bottomNavigationBar:
+            BottomNavigationBar(type: BottomNavigationBarType.shifting, items: [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.black,
+            icon: Icon(Icons.thumb_up),
+            title: new Text('like'),
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.black,
+            icon: Icon(Icons.share),
+            title: new Text('share'),
+          ),
+        ]));
   }
 }
 
@@ -57,49 +69,61 @@ class _JokesState extends State<Jokes> {
       },
       itemBuilder: (context, int index) {
         return Container(
-          margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Text(
-                    jokeBrain.getNextQuestion(),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
+            margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Center(
+                    child: Text(
+                      jokeBrain.getNextQuestion(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  FlatButton.icon(
-                    onPressed: () {
-                      print('You press the like button $index');
-                    },
-                    icon: Icon(Icons.thumb_up),
-                    label: Text('like button'),
-                  ),
-                  FlatButton.icon(
-                    onPressed: () {
-                      print('You press the share button $index');
-                    },
-                    icon: Icon(Icons.share),
-                    label: Text('share button'),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: <Widget>[
+                  //     FlatButton.icon(
+                  //       onPressed: () {
+                  //         print('You press the like button $index');
+                  //       },
+                  //       icon: Icon(
+                  //         Icons.thumb_up,
+                  //         color: Colors.white,
+                  //       ),
+                  //       label: Text(
+                  //         'like button',
+                  //         style: TextStyle(color: Colors.white),
+                  //       ),
+                  //     ),
+                  //     FlatButton.icon(
+                  //       onPressed: () {
+                  //         print('You press the share button $index');
+                  //       },
+                  //       icon: Icon(
+                  //         Icons.share,
+                  //         color: Colors.white,
+                  //       ),
+                  //       label: Text(
+                  //         'share button',
+                  //         style: TextStyle(color: Colors.white),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  SizedBox(height: 10),
+                  Text(
+                    'joke by: kareem fawas',
+                    textAlign: TextAlign.end,
                   ),
                 ],
               ),
-              Text(
-                'joke by: kareem fawas',
-                textAlign: TextAlign.end,
-              ),
-            ],
-          ),
-          // color: index % 2 == 0 ? Colors.green : Colors.blue,
-        );
+            )
+            // color: index % 2 == 0 ? Colors.green : Colors.blue,
+            );
       },
     );
   }
